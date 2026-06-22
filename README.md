@@ -1,5 +1,7 @@
 # architect-orchestrator
 
+![validate](https://github.com/nexiouscaliver/architect-orchestrator/actions/workflows/validate.yml/badge.svg)
+
 A Claude Code plugin that turns one session into a planning orchestrator. You describe an issue or feature; the **architect** skill scopes it, triages it by complexity, plans it, runs review gates proportional to risk, and dispatches a team of specialist subagents to do the work — while maintaining persistent project state. It plans and coordinates; it does not edit application code itself.
 
 ## Components
@@ -62,6 +64,16 @@ In your session, type `/architect` and describe the issue or feature. The archit
 - **Model routing** is in the skill's *Model Routing* section.
 - **Tool access** per agent is the `tools:` frontmatter field; tighten to constrain an agent.
 - **Add a specialist** — drop another file in `agents/` and add a line to the skill's *Your Team* roster so the architect knows it exists.
+
+## Development
+
+A CI workflow (`.github/workflows/validate.yml`) runs `scripts/validate_plugin.py` on every push, pull request, and tag. It checks the manifests (JSON + schema — including that `repository` is a string and the marketplace name isn't reserved), version sync between `plugin.json` and the marketplace entry, the directory layout (components at the plugin root, not inside `.claude-plugin/`), and frontmatter on the skill and every agent.
+
+Run it locally, no dependencies required:
+
+```
+python scripts/validate_plugin.py
+```
 
 ## Notes
 
