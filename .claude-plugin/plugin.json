@@ -1,6 +1,6 @@
 {
   "name": "architect-orchestrator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A planning orchestrator that takes a feature or issue from intake to completion: scopes it, plans it, gates the plan by complexity, dispatches a team of specialist subagents with model routing, and maintains persistent project state. Plans and coordinates; does not edit application code itself.",
   "author": {
     "name": "Shahil Kadia",

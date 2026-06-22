@@ -65,5 +65,5 @@ In your session, type `/architect` and describe the issue or feature. The archit
 
 ## Notes
 
-- Auto-delegation by description is currently unreliable in Claude Code; this works because the architect invokes its team by name.
+- The architect dispatches each team member explicitly by name via the Agent tool rather than relying on auto-delegation by description, so invocation is deterministic.
 - Subagent-heavy runs cost several times the tokens of a single thread. The lane system exists partly to keep that in check — heavy process only where risk justifies it.
