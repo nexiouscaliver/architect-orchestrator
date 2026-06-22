@@ -10,7 +10,7 @@
       "name": "architect-orchestrator",
       "source": "./",
       "description": "Planning orchestrator skill plus a team of specialist subagents.",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "keywords": ["orchestrator", "planning", "subagents", "workflow", "architect"]
     }
   ]

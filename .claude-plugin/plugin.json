@@ -1,16 +1,13 @@
 {
   "name": "architect-orchestrator",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A planning orchestrator that takes a feature or issue from intake to completion: scopes it, plans it, gates the plan by complexity, dispatches a team of specialist subagents with model routing, and maintains persistent project state. Plans and coordinates; does not edit application code itself.",
   "author": {
     "name": "Shahil Kadia",
     "url": "https://github.com/nexiouscaliver"
   },
   "homepage": "https://github.com/nexiouscaliver/architect-orchestrator",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/nexiouscaliver/architect-orchestrator.git"
-  },
+  "repository": "https://github.com/nexiouscaliver/architect-orchestrator",
   "license": "MIT",
   "keywords": ["orchestrator", "architect", "planning", "subagents", "workflow"]
 }
