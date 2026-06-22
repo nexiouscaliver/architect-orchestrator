@@ -169,7 +169,16 @@ def main() -> int:
             elif not src.startswith("./"):
                 fail(f"marketplace plugin {ename!r}: 'source' must start with './' (got {src!r})")
             else:
+                # Resolve and confirm the source stays within the marketplace
+                # root. This blocks ../ traversal and symlink escape. Symlinks
+                # that resolve *within* the root are allowed (the plugin spec
+                # supports them for sharing files across plugins).
                 plugin_dir = (ROOT / src).resolve()
+                try:
+                    plugin_dir.relative_to(ROOT)
+                except ValueError:
+                    fail(f"marketplace plugin {ename!r}: source {src!r} escapes the marketplace root")
+                    continue
                 if not (plugin_dir / ".claude-plugin" / "plugin.json").exists():
                     fail(f"marketplace plugin {ename!r}: source {src!r} has no .claude-plugin/plugin.json")
     ok("marketplace.json schema")
