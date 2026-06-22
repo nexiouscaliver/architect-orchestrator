@@ -1,0 +1,17 @@
+{
+  "name": "architect-orchestrator",
+  "description": "Personal marketplace hosting the architect-orchestrator plugin.",
+  "owner": {
+    "name": "Shahil Kadia",
+    "url": "https://github.com/nexiouscaliver"
+  },
+  "plugins": [
+    {
+      "name": "architect-orchestrator",
+      "source": "./",
+      "description": "Planning orchestrator skill plus a team of specialist subagents.",
+      "version": "1.0.0",
+      "keywords": ["orchestrator", "planning", "subagents", "workflow", "architect"]
+    }
+  ]
+}
