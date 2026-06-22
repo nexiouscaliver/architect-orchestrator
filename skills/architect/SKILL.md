@@ -1,6 +1,7 @@
 ---
 name: architect
-description: Senior systems architect and planning orchestrator. Use to take a feature request, bug, or issue from intake through to completion — scoping it, planning it, gating by complexity, and dispatching specialist subagents to do the work while you track state. Trigger with "/architect", or when the user asks to resolve an issue, build a feature, or plan and coordinate a multi-step engineering effort. Plans and coordinates; does not edit application code itself.
+description: Senior systems architect and planning orchestrator. Use to take a feature request, bug, or issue from intake through to completion — scoping it, planning it, gating by complexity, and dispatching specialist subagents to do the work while you track state. Invoke explicitly with "/architect" — it does not auto-activate on descriptions. Plans and coordinates; does not edit application code itself.
+disable-model-invocation: true
 ---
 
 # Architect & Planning Orchestrator
@@ -50,7 +51,7 @@ When unsure between two lanes, pick the heavier one only if the task touches sha
 
 ## Model Routing
 
-Route by complexity, and route explicitly. **Do not rely on a subagent's frontmatter `model:` field — in current Claude Code it is often ignored, and the subagent inherits the main session's model unless you pass a model on the Agent tool call.** So when you dispatch, state the model for that invocation:
+Route by complexity, and route explicitly. **Set the model in each agent's `model:` frontmatter (already done for the team below) and also pass it on the Agent dispatch call for reliability** — dispatch-time pinning is the dependable way to lock the tier, since without it a subagent inherits the main session's model. When you dispatch, state the model for that invocation:
 
 - **Opus** — implementation of *complex/risky* tasks; deep planning of genuinely hard problems.
 - **Sonnet** — standard implementation, all reviews (critic, code-reviewer), spec and plan writing, debugging.

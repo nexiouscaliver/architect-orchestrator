@@ -4,7 +4,7 @@ A Claude Code plugin that turns one session into a planning orchestrator. You de
 
 ## Components
 
-**Skill** — `architect`: the orchestrator workflow. Loads into your normal session on demand (`/architect`) or when you describe an effort to plan and resolve. Your project `CLAUDE.md` is never modified.
+**Skill** — `architect`: the orchestrator workflow. Loads into your normal session on demand via `/architect` (it does not auto-invoke on descriptions). Your project `CLAUDE.md` is never modified.
 
 **Subagents** (the team it dispatches):
 
@@ -22,7 +22,7 @@ A Claude Code plugin that turns one session into a planning orchestrator. You de
 ## How it works
 
 - **Complexity lanes.** Each task is triaged *trivial / standard / complex*, and the lane decides how much process it gets. Trivial tasks skip the gates and are batched into a single review; standard tasks get a plan + one review; complex tasks get the full spec → review → plan → review → implement → review pipeline.
-- **Model routing.** Routing is done by the architect passing the model explicitly on each dispatch (the subagent `model:` frontmatter is unreliable in current Claude Code). Opus for complex implementation, Sonnet for standard work and all reviews, Haiku for leaf tasks.
+- **Model routing.** Each agent sets its model in frontmatter, and the architect also passes it explicitly on each dispatch for reliability. Opus for complex implementation, Sonnet for standard work and all reviews, Haiku for leaf tasks.
 - **One human gate.** You approve the implementation plan before execution. Critic reviews are automatic inputs the architect must address.
 - **Persistent state.** The architect maintains `.claude/orchestrator/queue.md` (task tracking) and `memory.md` (durable decisions) in each project, so work survives across sessions.
 
@@ -54,7 +54,7 @@ cp architect-orchestrator/agents/*.md ~/.claude/agents/
 
 ## Use
 
-In your session, type `/architect` and describe the issue or feature — or just describe it and let the skill auto-invoke. The architect will scope, triage, plan, and ask for your approval before it starts dispatching.
+In your session, type `/architect` and describe the issue or feature. The architect will scope, triage, plan, and ask for your approval before it starts dispatching.
 
 ## Customizing
 
